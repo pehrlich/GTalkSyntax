@@ -1,0 +1,17 @@
+{
+  "name": "GTalkSyntax",
+  "version": "0.1",
+  "manifest_version": 2,
+  "description": "Automatic Syntax Highlighting for GChat.",
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "css": ["assets/main.css"],
+      "js": ["lib/jquery-1.8.1.js", "lib/highlight.min.js", "lib/classifier-0.1.0.min.js", "assets/classifier_info.js", "assets/highlight.js"]
+    }
+  ],
+  "permissions": [
+    "background",
+    "https://mail.google.com/*"
+  ]
+}
