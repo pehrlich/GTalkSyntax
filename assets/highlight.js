@@ -23,18 +23,29 @@
       return this.text().split(' ');
     };
 
-    Highlight.prototype.setCategory = function(category) {
+    Highlight.prototype.setDisplay = function(category) {
       if (category === 'text') {
         this.html(this.data('original_html'));
       } else if (category === 'code') {
         this.html(this.highlighted_text());
       }
-      this.add_hud();
-      return bayes.train(this.baysian_data(), category);
+      return this.add_hud();
+    };
+
+    Highlight.prototype.setCategory = function(category) {
+      this.setDisplay(category);
+      bayes.train(this.baysian_data(), category);
+      if (GTalkSyntax.host) {
+        console.log('training', GTalkSyntax.url('/classifiers/1/train'));
+        return $.post(GTalkSyntax.url('/classifiers/1/train'), {
+          cat: category,
+          doc: this.baysian_data()
+        });
+      }
     };
 
     Highlight.prototype.guess = function() {
-      return this.setCategory(bayes.classify(this.text()));
+      return this.setDisplay(bayes.classify(this.text()));
     };
 
     Highlight.prototype.add_hud = function() {

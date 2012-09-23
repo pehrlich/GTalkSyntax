@@ -15,18 +15,29 @@ class Highlight
     @text().split(' ')
 
 
-  setCategory: (category)->
+  setDisplay: (category)->
     if category == 'text'
-      @html( @data('original_html') )
+      @html @data('original_html')
     else if category == 'code'
       @html @highlighted_text()
 
     @add_hud()
 
-    bayes.train(@baysian_data() , category);
+  setCategory: (category)->
+    @setDisplay category
+
+
+    # todo: get rid of this? don't? Persist w/ localstorage?
+    bayes.train(@baysian_data() , category)
+
+    if GTalkSyntax.host
+      console.log('training', GTalkSyntax.url('/classifiers/1/train'))
+      # todo: move to custom "remote" backend? Fancy classifier version?
+      $.post GTalkSyntax.url('/classifiers/1/train'), {cat: category, doc: @baysian_data()}
+
 
   guess: ->
-    @setCategory bayes.classify @text()
+    @setDisplay bayes.classify @text()
 
   add_hud: ->
     @append("<div class='GTalkSyntax-HUD'><span class='GTalkSyntax-text'>text</span> | <span class='GTalkSyntax-code'>code</span></div>")

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>GTalk Syntax Options</title></head>
+<script type="text/javascript" src="lib/underscore.js"></script>
+<script type="text/javascript" src="lib/jquery-1.8.1.js"></script>
+<script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css"/>
+<script type="text/javascript" src="assets/gtalkSyntax.js"></script>
+<script type="text/javascript" src="assets/options.js"></script>
+<style type="text/css">
+    .centered {
+        text-align: center;
+    }
+    .padded {
+        padding: 1em 0;
+    }
+    #collection_method_status{
+        color: #0c0;
+    }
+</style>
+
+<body>
+
+<div class="padded">
+    <h1 class="centered">GTalk Syntax Options</h1>
+</div>
+
+
+<div class="row offset1">
+    <div class="span4">
+        <p>
+            GTalk Syntax can send your chat messages data back to its server to improve its machine learning.
+            Any data sent will not in any way be treated as private information, as those words are used unencrypted
+            for client-side baysian intelligence.
+        </p>
+
+        <p>
+            You can also use dev mode, which allows a custom server endpoint.
+        </p>
+    </div>
+    <div class="span8">
+        <label for="collection_method_input">Collection Method:</label>
+        <select id="collection_method_input">
+            <option value="off">Off</option>
+            <option value="on">On</option>
+            <option value="custom">Custom</option>
+        </select>
+        <input type="text" id="collection_custom_url" style="display: none;"/>
+        <div id="collection_method_status"></div>
+    </div>
+</div>
+
+</body>
+</html>
