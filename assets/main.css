@@ -27,3 +27,10 @@ div:hover > .GTalkSyntax-HUD {
 .GTalkSyntax-HUD .current {
     font-weight: bold;
 }
+
+
+[role=log] .kl pre{
+    background-color: #DDD;
+    padding: 2px;
+    border-radius: 4px;
+}

@@ -24,8 +24,13 @@
     };
 
     Highlight.prototype.setDisplay = function(category) {
+      var original_html;
       if (category === 'text') {
-        this.html(this.data('original_html'));
+        original_html = this.data('original_html');
+        original_html = original_html.replace(/`(.+?)`/g, function(match, text, urlId) {
+          return " <pre style='overflow-x: auto; display: inline-block;'><code>" + text + "</code></pre> ";
+        });
+        this.html(original_html);
       } else if (category === 'code') {
         this.html(this.highlighted_text());
       }
@@ -45,7 +50,13 @@
     };
 
     Highlight.prototype.guess = function() {
-      return this.setDisplay(bayes.classify(this.text()));
+      var original_text;
+      original_text = this.text();
+      if (original_text.indexOf('`') !== -1) {
+        return this.setDisplay(bayes.classify('text'));
+      } else {
+        return this.setDisplay(bayes.classify(original_text));
+      }
     };
 
     Highlight.prototype.add_hud = function() {
@@ -89,6 +100,6 @@
 
   setTimeout(highlightNewMessages, 1000);
 
-  console.log('loaded highlight');
+  console.log('loaded highlight 3');
 
 }).call(this);

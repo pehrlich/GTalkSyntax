@@ -17,7 +17,10 @@ class Highlight
 
   setDisplay: (category)->
     if category == 'text'
-      @html @data('original_html')
+      original_html = @data('original_html')
+      original_html = original_html.replace /`(.+?)`/g, (match, text, urlId)->
+        " <pre style='overflow-x: auto; display: inline-block;'><code>#{text}</code></pre> "
+      @html original_html
     else if category == 'code'
       @html @highlighted_text()
 
@@ -37,7 +40,12 @@ class Highlight
 
 
   guess: ->
-    @setDisplay bayes.classify @text()
+    original_text = @text()
+    if original_text.indexOf('`') != -1
+      # if there are backticks, don't be smart about it
+      @setDisplay bayes.classify('text')
+    else
+      @setDisplay bayes.classify(original_text)
 
   add_hud: ->
     @append("<div class='GTalkSyntax-HUD'><span class='GTalkSyntax-text'>text</span> | <span class='GTalkSyntax-code'>code</span></div>")
@@ -62,6 +70,6 @@ highlightNewMessages = ->
 
 setTimeout(highlightNewMessages, 1000)
 
-console.log('loaded highlight')
+console.log('loaded highlight 3')
 
 
