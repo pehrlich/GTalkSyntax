@@ -1,6 +1,8 @@
 {
   "name": "GTalkSyntax",
   "version": "0.2",
+  "name": "gTalk Syntax Highlighting",
+  "version": "0.2.3",
   "manifest_version": 2,
   "description": "Automatic Syntax Highlighting for GChat.",
   "content_scripts": [
