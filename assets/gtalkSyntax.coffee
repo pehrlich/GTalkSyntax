@@ -22,9 +22,9 @@ class window.GTalkSyntax
     @[name] = (value, callback) ->
       if _.isFunction(value) && !callback
         callback = value
-        value = null
+        value = undefined
 
-      if value
+      if value != undefined
         options = {}
         options[name] = value
         # in what could be a bug, no args are passed to the callback by chrome.  We alter this behavior here:
@@ -35,4 +35,5 @@ class window.GTalkSyntax
           callback(items[name] || attr_default)
 
   @attr_accessor('data_collection_option', 'off')
+  @attr_accessor('auto_detect_option', false)
   @refresh_host()

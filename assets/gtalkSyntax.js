@@ -36,9 +36,9 @@
         var options;
         if (_.isFunction(value) && !callback) {
           callback = value;
-          value = null;
+          value = void 0;
         }
-        if (value) {
+        if (value !== void 0) {
           options = {};
           options[name] = value;
           return chrome.storage.sync.set(options, function() {
@@ -53,6 +53,8 @@
     };
 
     GTalkSyntax.attr_accessor('data_collection_option', 'off');
+
+    GTalkSyntax.attr_accessor('auto_detect_option', false);
 
     GTalkSyntax.refresh_host();
 

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><title>GTalk Syntax Options</title></head>
+<head><title>gTalk Syntax Options</title></head>
 <script type="text/javascript" src="lib/underscore.js"></script>
-<script type="text/javascript" src="lib/jquery-1.8.1.js"></script>
+<script type="text/javascript" src="lib/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="lib/util.js"></script>
 <script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css"/>
 <script type="text/javascript" src="assets/gtalkSyntax.js"></script>
@@ -11,25 +12,52 @@
     .centered {
         text-align: center;
     }
+
     .padded {
         padding: 1em 0;
     }
-    #collection_method_status{
+
+    .status {
         color: #0c0;
+    }
+    .row{
+        /*border-bottom: 1px solid #ccc;*/
+        margin-top: 1em;
+    }
+    label{
+        vertical-align: text-top;
+        display: inline-block;
     }
 </style>
 
 <body>
 
 <div class="padded">
-    <h1 class="centered">GTalk Syntax Options</h1>
+    <h1 class="centered" style="margin-bottom: 0;">gTalk Syntax Highlighter Options</h1>
 </div>
 
+
+<hr/>
 
 <div class="row offset1">
     <div class="span4">
         <p>
-            GTalk Syntax can send your chat messages data back to its server to improve its machine learning.
+            Syntax Highlighter can use a Baysian algorithm to automatically determine which chat messages should be highlighted.
+        </p>
+    </div>
+    <div class="span7">
+        <input type="checkbox" name="auto_detect" id="auto_detect_input">
+        <label for="auto_detect_input">(Beta) Auto-detect code blocks.</label>
+        <div id="auto_detect_status" class="status"></div>
+    </div>
+</div>
+
+<hr/>
+
+<div class="row offset1">
+    <div class="span4">
+        <p>
+            gTalk Syntax can send your chat messages data back to its server to improve its machine learning.
             Any data sent will not in any way be treated as private information, as those words are used unencrypted
             for client-side baysian intelligence.
         </p>
@@ -38,17 +66,20 @@
             You can also use dev mode, which allows a custom server endpoint.
         </p>
     </div>
-    <div class="span8">
+    <div class="span7">
         <label for="collection_method_input">Collection Method:</label>
         <select id="collection_method_input">
             <option value="off">Off</option>
             <option value="on">On</option>
             <option value="custom">Custom</option>
         </select>
-        <input type="text" id="collection_custom_url" style="display: none;"/>
-        <div id="collection_method_status"></div>
+        <input type="text" id="collection_custom_url" style="display: none;" placeholder="localhost:3000"/>
+
+        <div id="collection_method_status" class="status"></div>
     </div>
 </div>
+
+
 
 </body>
 </html>

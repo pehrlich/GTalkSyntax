@@ -2,7 +2,7 @@
 (function() {
 
   $(function() {
-    return GTalkSyntax.data_collection_option(function(value) {
+    GTalkSyntax.data_collection_option(function(value) {
       if (value == null) {
         value = 'localhost:3000';
       }
@@ -11,6 +11,14 @@
       } else {
         $("option[value=custom]").attr('selected', 'selected');
         return $('#collection_custom_url').val(value).show();
+      }
+    });
+    return GTalkSyntax.auto_detect_option(function(value) {
+      if (value == null) {
+        value = false;
+      }
+      if (value) {
+        return $('#auto_detect_input').check();
       }
     });
   });
@@ -24,7 +32,13 @@
       $('#collection_custom_url').hide();
     }
     return GTalkSyntax.data_collection_option(value, function(value) {
-      return $('#collection_method_status').html("saved: " + value);
+      return $('#collection_method_status').html("Saved: " + value);
+    });
+  });
+
+  $(document).on('change', '#auto_detect_input', function() {
+    return GTalkSyntax.auto_detect_option($('#auto_detect_input').is_checked(), function(value) {
+      return $('#auto_detect_status').html("Saved: " + value);
     });
   });
 

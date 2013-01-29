@@ -1,6 +1,11 @@
 window.bayes = new classifier.Bayesian();
 bayes.fromJSON(classifier_info) if @['classifier_info']
 
+auto_detect_option = false
+
+GTalkSyntax.auto_detect_option (value) ->
+  auto_detect_option = value
+
 class Highlight
   highlighted_text: ->
     text = $('<div/>').html( @data('original_html').replace(/<br>/g, 'REPLACEMENT_LINEBREAK')).text()
@@ -41,9 +46,9 @@ class Highlight
 
   guess: ->
     original_text = @text()
-    if original_text.indexOf('`') != -1
+    if auto_detect_option == false || original_text.indexOf('`') != -1
       # if there are backticks, don't be smart about it
-      @setDisplay bayes.classify('text')
+      @setDisplay 'text'
     else
       @setDisplay bayes.classify(original_text)
 
@@ -66,10 +71,10 @@ $.fn.highlight = ->
 
 highlightNewMessages = ->
   $('[role=log] .kl').filter( -> $(@).find('.GTalkSyntax-HUD').length < 1 ).highlight();
-  setTimeout(highlightNewMessages, 200)
+  setTimeout(highlightNewMessages, 150)
 
 setTimeout(highlightNewMessages, 1000)
 
-console.log('loaded highlight 3')
+console.log('loaded highlight')
 
 
