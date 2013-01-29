@@ -20,8 +20,8 @@
 
     Highlight.prototype.highlighted_text = function() {
       var text;
-      text = $('<div/>').html(this.data('original_html').replace(/<br>/g, 'REPLACEMENT_LINEBREAK')).text();
-      text = hljs.highlightAuto(text).value.replace(/REPLACEMENT_LINEBREAK/g, '<br>');
+      text = $('<div/>').html(this.data('original_html').replace(/<br>/g, "\n")).text();
+      text = hljs.highlightAuto(text).value.replace(/\n/g, '<br>');
       return "<pre style='overflow-x: auto;'><code>" + text + "</code></pre>";
     };
 
