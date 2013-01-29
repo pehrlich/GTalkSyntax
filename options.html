@@ -5,73 +5,56 @@
 <script type="text/javascript" src="lib/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="lib/util.js"></script>
 <script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
-<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css"/>
 <script type="text/javascript" src="assets/gtalkSyntax.js"></script>
 <script type="text/javascript" src="assets/options.js"></script>
-<style type="text/css">
-    .centered {
-        text-align: center;
-    }
 
-    .padded {
-        padding: 1em 0;
-    }
+<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="lib/css/tab.css"/>
 
-    .status {
-        color: #0c0;
-    }
-    .row{
-        /*border-bottom: 1px solid #ccc;*/
-        margin-top: 1em;
-    }
-    label{
-        vertical-align: text-top;
-        display: inline-block;
-    }
-</style>
 
 <body>
 
-<div class="padded">
-    <h1 class="centered" style="margin-bottom: 0;">gTalk Syntax Highlighter Options</h1>
-</div>
 
+<div class="container-fluid">
+    <h1>Options:</h1>
 
-<hr/>
-
-<div class="row offset1">
+    <hr/>
+<div class="row">
     <div class="span4">
+        <h3>Auto-detect: <small><i>(beta)</i></small></h3>
         <p>
-            Syntax Highlighter can use a Baysian algorithm to automatically determine which chat messages should be highlighted.
+            Automatically determine code blocks within each chat messages should be highlighted using a Baysian algorithm.
         </p>
     </div>
-    <div class="span7">
+    <div class="span3">
         <input type="checkbox" name="auto_detect" id="auto_detect_input">
-        <label for="auto_detect_input">(Beta) Auto-detect code blocks.</label>
+        <label for="auto_detect_input">Auto-detect code blocks <small><i>(beta)</i></small></label>
         <div id="auto_detect_status" class="status"></div>
     </div>
 </div>
 
 <hr/>
 
-<div class="row offset1">
+<div class="row">
     <div class="span4">
+        <h3>Collection Method:</h3>
         <p>
-            gTalk Syntax can send your chat messages data back to its server to improve its machine learning.
-            Any data sent will not in any way be treated as private information, as those words are used unencrypted
-            for client-side baysian intelligence.
+            Improve gTalk Syntax machine learning by sending your chat messages data to it's servers for client-side baysian intelligence.<p>
+            <small>WARNING: All data sent will be unencrypted</small>
+
         </p>
 
         <p>
+            <h4>Dev Mode:</h4>
             You can also use dev mode, which allows a custom server endpoint.
         </p>
     </div>
-    <div class="span7">
-        <label for="collection_method_input">Collection Method:</label>
+    <div class="span3">
+        <!-- <label for="collection_method_input">Collection Method:</label> -->
         <select id="collection_method_input">
-            <option value="off">Off</option>
+            <option value="off">Off (Default)</option>
             <option value="on">On</option>
-            <option value="custom">Custom</option>
+            <option value="custom">Dev Mode</option>
         </select>
         <input type="text" id="collection_custom_url" style="display: none;" placeholder="localhost:3000"/>
 
@@ -79,6 +62,8 @@
     </div>
 </div>
 
+
+</div> <!-- end container -->
 
 
 </body>
