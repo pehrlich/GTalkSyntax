@@ -5,13 +5,11 @@
 <script type="text/javascript" src="lib/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="lib/util.js"></script>
 <script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="assets/gtalkSyntax.js"></script>
-<script type="text/javascript" src="assets/options.js"></script>
+<script type="text/javascript" src="javascripts/gtalkSyntax.js"></script>
+<script type="text/javascript" src="javascripts/options.js"></script>
 
 <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css"/>
-<link rel="stylesheet" type="text/css" href="lib/css/tab.css"/>
-
-
+<link rel="stylesheet" type="text/css" href="stylesheets/tab.css"/>
 <body>
 
 
@@ -19,51 +17,62 @@
     <h1>Options:</h1>
 
     <hr/>
-<div class="row">
-    <div class="span4">
-        <h3>Auto-detect: <small><i>(beta)</i></small></h3>
-        <p>
-            Automatically determine code blocks within each chat messages should be highlighted using a Baysian algorithm.
-        </p>
-    </div>
-    <div class="span3">
-        <input type="checkbox" name="auto_detect" id="auto_detect_input">
-        <label for="auto_detect_input">Auto-detect code blocks <small><i>(beta)</i></small></label>
-        <div id="auto_detect_status" class="status"></div>
-    </div>
-</div>
+    <div class="row">
+        <h3>Auto-detect:
+            <small><i>(beta)</i></small>
+        </h3>
+        <div class="span4">
+            <p>
+                Automatically determine code blocks within each chat messages should be highlighted using a Baysian
+                algorithm.
+            </p>
+        </div>
+        <div class="span3">
+            <input type="checkbox" name="auto_detect" id="auto_detect_input">
+            <label for="auto_detect_input">Auto-detect code blocks
+                <small><i>(beta)</i></small>
+            </label>
 
-<hr/>
+            <div id="auto_detect_status" class="status"></div>
+        </div>
+    </div>
 
-<div class="row">
-    <div class="span4">
+    <hr/>
+
+    <div class="row">
         <h3>Collection Method:</h3>
-        <p>
-            Improve gTalk Syntax machine learning by sending your chat messages data to it's servers for client-side baysian intelligence.<p>
-            <small>WARNING: All data sent will be unencrypted</small>
 
-        </p>
+        <div class="span4">
+            <p>
+                Improve gTalk Syntax machine learning by sending your chat messages data to it's servers for client-side
+                baysian intelligence.
 
-        <p>
+            <p>
+                <small>WARNING: All data sent will be unencrypted</small>
+
+            </p>
+
+            <p>
             <h4>Dev Mode:</h4>
             You can also use dev mode, which allows a custom server endpoint.
-        </p>
-    </div>
-    <div class="span3">
-        <!-- <label for="collection_method_input">Collection Method:</label> -->
-        <select id="collection_method_input">
-            <option value="off">Off (Default)</option>
-            <option value="on">On</option>
-            <option value="custom">Dev Mode</option>
-        </select>
-        <input type="text" id="collection_custom_url" style="display: none;" placeholder="localhost:3000"/>
+            </p>
+        </div>
+        <div class="span3">
+            <!-- <label for="collection_method_input">Collection Method:</label> -->
+            <select id="collection_method_input">
+                <option value="off">Off (Default)</option>
+                <option value="on">On</option>
+                <option value="custom">Dev Mode</option>
+            </select>
+            <input type="text" id="collection_custom_url" style="display: none;" placeholder="localhost:3000"/>
 
-        <div id="collection_method_status" class="status"></div>
+            <div id="collection_method_status" class="status"></div>
+        </div>
     </div>
+
+
 </div>
-
-
-</div> <!-- end container -->
+<!-- end container -->
 
 
 </body>
