@@ -1,8 +1,11 @@
 {
   "name": "gTalk Syntax Highlighting",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "manifest_version": 2,
-  "description": "Automatic Syntax Highlighting for GChat.",
+  "description": "Automatic Syntax Highlighting for gChat.",
+  "icons": { "16": "images/icon-16.png",
+             "48": "images/icon-48.png",
+            "128": "images/icon-128.png" },
   "content_scripts": [
     {
       "matches": ["https://mail.google.com/*"],

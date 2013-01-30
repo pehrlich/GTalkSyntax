@@ -1,3 +1,5 @@
+0.2.5
+ - Icon in tools
 0.2.4
  - Word-level syntax highlighting, design for options page
 0.2.3
