@@ -8,9 +8,9 @@ GTalkSyntax.auto_detect_option (value) ->
 
 class Highlight
   highlighted_text: ->
-    text = $('<div/>').html( @data('original_html').replace(/<br>/g, 'REPLACEMENT_LINEBREAK')).text()
+    text = $('<div/>').html( @data('original_html').replace(/<br>/g, "\n")).text()
 
-    text = hljs.highlightAuto(text).value.replace(/REPLACEMENT_LINEBREAK/g, '<br>')
+    text = hljs.highlightAuto(text).value.replace(/\n/g, '<br>')
 
     "<pre style='overflow-x: auto;'><code>#{text}</code></pre>"
 

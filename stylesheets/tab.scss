@@ -1,3 +1,6 @@
+html{
+  height: 100%;
+}
 
 body{
     /* Setting default text color, background and a font stack */
@@ -19,7 +22,7 @@ body{
     color: #0c0;
 }
 label{
-    vertical-align: text-top;
+    vertical-align: -webkit-baseline-middle;
     display: inline-block;
 }
 h1 {
@@ -37,4 +40,8 @@ hr {
     background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
     background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
     background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+}
+
+.row > h3{
+  margin-left: 20px;
 }

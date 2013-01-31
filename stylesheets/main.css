@@ -1,0 +1,30 @@
+div > .GTalkSyntax-HUD {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: none;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -mox-border-radius: 3px;
+  -o-border-radius: 3px;
+  box-shadow: 0px 0px 3px #cccccc;
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+div:hover > .GTalkSyntax-HUD {
+  display: block; }
+
+.GTalkSyntax-HUD .current {
+  font-weight: bold; }
+
+[role=log] .kl pre {
+  background-color: #DDD;
+  padding: 2px;
+  border-radius: 4px; }

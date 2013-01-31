@@ -21,7 +21,7 @@ Visit [chrome://chrome/extensions/]() and click GTalkSyntax options to enable da
  * Clone repository: `hub clone pehrlich/GTalkSyntax`
  * In chrome, navigate to [chrome://chrome/extensions/]().
    Select repository with "Load unpacked extension".
- * Compile coffee with `coffee -wc assets/*.coffee`
+ * Compile assets with `coffee -wc javascripts/*.coffee` and `sass -w stylesheets/*.scss`
 
 Server-side repository here:
 [https://github.com/pehrlich/BaysianServer]()
