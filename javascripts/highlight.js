@@ -77,7 +77,7 @@
       });
       this.find(".GTalkSyntax-caret").click(function(e) {
         console.log('target click toggling', $(e.target), $(e.currentTarget).siblings('ul'));
-        return $(e.target).siblings('ul').toggle();
+        return _this.dropdown().toggle();
       });
       return this.find(".GTalkSyntax-share").click(function(e) {
         return _this.text_area().concat(' https://chrome.google.com/webstore/detail/gtalk-syntax-highlighting/okpdnaeoefggpaccmolhoaiffmmdoool ');
@@ -86,6 +86,10 @@
 
     Highlight.prototype.hud = function() {
       return this.find(".GTalkSyntax-HUD:first");
+    };
+
+    Highlight.prototype.menu = function() {
+      return this.find('ul.dropdown-menu');
     };
 
     Highlight.prototype.text_area = function() {
@@ -121,11 +125,9 @@
         original_html: el.html()
       }).guess();
       el.on('mouseenter', function(e) {
-        console.log('mouseenter');
         return el.hud().show();
       });
       return el.on('mouseleave', function(e) {
-        console.log('mouseleave');
         return el.hud().hide();
       });
     });
@@ -140,6 +142,6 @@
 
   setTimeout(highlightNewMessages, 1000);
 
-  console.log('loaded highlight');
+  console.log('Loaded gTalk Highlighter');
 
 }).call(this);

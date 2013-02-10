@@ -72,10 +72,11 @@ class Highlight
     @text_button().click => @setCategory 'text'
     @find(".GTalkSyntax-caret").click (e)=>
       console.log 'target click toggling', $(e.target), $(e.currentTarget).siblings('ul')
-      $(e.target).siblings('ul').toggle()
+      @dropdown().toggle()
     @find(".GTalkSyntax-share").click (e)=> @text_area().concat(' https://chrome.google.com/webstore/detail/gtalk-syntax-highlighting/okpdnaeoefggpaccmolhoaiffmmdoool ')
 
   hud: -> @find(".GTalkSyntax-HUD:first")
+  menu: -> @find('ul.dropdown-menu')
   text_area: -> @closest('[role=dialog]').find('textarea:first')
   code_button: ->  @find(".GTalkSyntax-code")
   text_button: ->  @find(".GTalkSyntax-text")
@@ -93,12 +94,9 @@ $.fn.highlight = ->
     el.css({position: 'relative'}).data( {original_html: el.html()} ).guess()
 
     el.on 'mouseenter', (e)->
-      console.log 'mouseenter'
-      el.hud().show() #unless open_menu
-#    el.on 'mouseout', -> el.hud().hide()
+      el.hud().show()
     el.on 'mouseleave', (e)->
-      console.log 'mouseleave'
-      el.hud().hide() #unless open_menu
+      el.hud().hide()
 
 
 highlightNewMessages = ->
@@ -109,7 +107,6 @@ highlightNewMessages = ->
 setTimeout(highlightNewMessages, 1000)
 
 
-
-console.log('loaded highlight')
+console.log('Loaded gTalk Highlighter')
 
 
