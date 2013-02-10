@@ -2,6 +2,9 @@ Array.prototype.includes = (item)->
   @indexOf(item) >= 0
 
 
+$.fn.concat = (concat)->
+  @val(@val() + concat)
+
 $.fn.replace = (one, two)->
   html = @html()
   @html html.replace(one, two)

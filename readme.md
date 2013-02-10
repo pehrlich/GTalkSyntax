@@ -21,10 +21,15 @@ Visit [chrome://chrome/extensions/]() and click GTalkSyntax options to enable da
  * Clone repository: `hub clone pehrlich/GTalkSyntax`
  * In chrome, navigate to [chrome://chrome/extensions/]().
    Select repository with "Load unpacked extension".
- * Compile assets with `coffee -wc javascripts/*.coffee` and `sass -w stylesheets/*.scss`
+ * Compile assets with `coffee -wc ./javascripts/*.coffee ./javascripts/**/*.coffee` and `sass -w stylesheets/*.scss`
 
 Server-side repository here:
 [https://github.com/pehrlich/BaysianServer]()
 
 ### Maintainence
 Contact [@ehrlicp](twitter.com/ehrlicp) on twitter.
+
+
+
+### TODO
+real value features baysian classifier
