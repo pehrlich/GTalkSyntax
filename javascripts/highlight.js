@@ -70,19 +70,23 @@
       var _this = this;
       this.append("      <div class='GTalkSyntax-HUD'>        <span class='GTalkSyntax-text'>text</span> |        <span class='GTalkSyntax-code'>code</span>        <span class='GTalkSyntax-caret'>          <b></b>        </span>        <ul class='dropdown-menu'>          <li class='GTalkSyntax-copy'>            Copy Code          </li>          <li class='GTalkSyntax-share'>            Share Plugin          </li>        </ul>     </div>      ");
       this.code_button().click(function() {
-        return _this.setCategory('code');
+        _this.setCategory('code');
+        return GTalkSyntax.track('click', 'code');
       });
       this.text_button().click(function() {
-        return _this.setCategory('text');
+        _this.setCategory('text');
+        return GTalkSyntax.track('click', 'text');
       });
       this.find(".GTalkSyntax-caret").click(function(e) {
-        console.log('target click toggling', $(e.target), $(e.currentTarget).siblings('ul'));
-        return _this.dropdown().toggle();
+        _this.dropdown().toggle();
+        return GTalkSyntax.track('toggle', 'dropdown');
       });
       this.share_link().click(function(e) {
-        return _this.text_area().concat(' https://chrome.google.com/webstore/detail/gtalk-syntax-highlighting/okpdnaeoefggpaccmolhoaiffmmdoool ');
+        _this.text_area().concat(' https://chrome.google.com/webstore/detail/gtalk-syntax-highlighting/okpdnaeoefggpaccmolhoaiffmmdoool ');
+        return GTalkSyntax.track('click', 'share plugin');
       });
       return this.copy_link().click(function(e) {
+        GTalkSyntax.track('click', 'copy contents');
         return chrome.extension.sendMessage({
           command: "copy",
           content: $("<span>" + (_this.data('original_html')) + "</span>").text()

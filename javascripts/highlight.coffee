@@ -72,13 +72,20 @@ class Highlight
         </ul>
      </div>
       "
-    @code_button().click => @setCategory 'code'
-    @text_button().click => @setCategory 'text'
+    @code_button().click =>
+      @setCategory 'code'
+      GTalkSyntax.track 'click', 'code'
+    @text_button().click =>
+      @setCategory 'text'
+      GTalkSyntax.track 'click', 'text'
     @find(".GTalkSyntax-caret").click (e)=>
-      console.log 'target click toggling', $(e.target), $(e.currentTarget).siblings('ul')
       @dropdown().toggle()
-    @share_link().click (e)=> @text_area().concat(' https://chrome.google.com/webstore/detail/gtalk-syntax-highlighting/okpdnaeoefggpaccmolhoaiffmmdoool ')
+      GTalkSyntax.track 'toggle', 'dropdown'
+    @share_link().click (e)=>
+      @text_area().concat(' https://chrome.google.com/webstore/detail/gtalk-syntax-highlighting/okpdnaeoefggpaccmolhoaiffmmdoool ')
+      GTalkSyntax.track 'click', 'share plugin'
     @copy_link().click (e)=>
+      GTalkSyntax.track 'click', 'copy contents'
       chrome.extension.sendMessage {command: "copy", content: $("<span>#{@data('original_html')}</span>").text()}, (response) ->
         console.log 'Message Response', response
 
