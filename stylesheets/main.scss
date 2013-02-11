@@ -36,6 +36,9 @@ div > .GTalkSyntax-HUD {
   .current {
     font-weight: bold;
   }
+  // note: the dropdown menu will currently go below the text box if dealing with a short message on the bottom of the window
+  // See this SO/fiddle: http://stackoverflow.com/questions/11230754/html-stack-a-child-element-above-the-sibling-of-its-parent-which-has-been-z-in
+  // this must be why bootstrap tooltips appear on bottom of page. Maybe we can do the same.
   .dropdown-menu {
     display: none;
   }

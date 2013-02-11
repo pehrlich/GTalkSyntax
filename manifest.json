@@ -26,7 +26,11 @@
   ],
   "permissions": [
     "https://mail.google.com/*",
-    "storage"
+    "storage",
+    "clipboardWrite"
   ],
-  "options_page": "options.html"
+  "options_page": "options.html",
+  "background": {
+    "page": "background.html"
+  }
 }
