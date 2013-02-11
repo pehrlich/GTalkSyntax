@@ -132,7 +132,7 @@
   };
 
   highlightNewMessages = function() {
-    $('[role=log] .kl, [role=log] .kn').filter(function() {
+    $('[role=log] .kl, [role=log] .kk [id]').filter(function() {
       return $(this).find('.GTalkSyntax-HUD').length < 1;
     }).highlight();
     return setTimeout(highlightNewMessages, 150);
