@@ -13,7 +13,7 @@ class Highlight
 
     text = hljs.highlightAuto(text).value.replace(/\n/g, '<br>')
 
-    "<pre style='overflow-x: auto;'><code>#{text}</code></pre>"
+    "<pre style='overflow-x: auto;'><code style='overflow-x: auto;'>#{text}</code></pre>"
 
 
   baysian_data: ->

@@ -22,7 +22,7 @@
       var text;
       text = $('<div/>').html(this.data('original_html').replace(/<br>/g, "\n")).text();
       text = hljs.highlightAuto(text).value.replace(/\n/g, '<br>');
-      return "<pre style='overflow-x: auto;'><code>" + text + "</code></pre>";
+      return "<pre style='overflow-x: auto;'><code style='overflow-x: auto;'>" + text + "</code></pre>";
     };
 
     Highlight.prototype.baysian_data = function() {
