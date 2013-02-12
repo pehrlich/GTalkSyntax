@@ -5,18 +5,23 @@ html {
 body {
   /* Setting default text color, background and a font stack */
   margin-left: 5%;
+  margin-right: 5%;
+  font-family: 'Lato', sans-serif;
   font-size: 18px;
-  color: #666;
+  color: #38a3d4;
+  border: 1px solid #333;
+  text-shadow: 1px 1px 0 #2d3035;
   /* A webkit gradient: */
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eeeeee), to(#dddddd));
-  background-image: url('../images/paper.png');
-  text-shadow: 1px 1px 0 white;
-  font-family: 'Lato', sans-serif;
+  background-image: url('http://subtlepatterns.com/patterns/low_contrast_linen.png');
   overflow-x: hidden; }
 
 #options {
   margin-top: 10%; }
-
+.row, .row-fluid {
+ background-color: rgba(66,66,66,0.4);
+ box-shadow: 0px 1px 10px rgba(66,66,66,0.5);
+}
 .status {
   color: #0c0; }
 
