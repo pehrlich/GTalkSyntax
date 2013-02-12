@@ -4,6 +4,7 @@ html {
 body {
   /* Setting default text color, background and a font stack */
   margin-left: 5%;
+  margin-right: 5%;
   font-size: 18px;
   color: #666;
   /* A webkit gradient: */
