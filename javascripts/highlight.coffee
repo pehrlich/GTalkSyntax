@@ -103,21 +103,28 @@ class Highlight
 # to be called on a span with text
 $.fn.highlight = ->
   @each (index, element) ->
-    el = $(element)
+    container = $(element)
+    if (container.is('.kk'))
+      contents = container.find('[id]:first')
+    else
+      contents = container
+
     for key, value of Highlight::
-      el[key] = value
+      contents[key] = value
 
-    el.css({position: 'relative'}).data( {original_html: el.html()} ).guess()
+    contents.data( {original_html: contents.html()} ).guess()
 
-    el.on 'mouseenter', (e)->
-      el.hud().show()
-    el.on 'mouseleave', (e)->
-      el.hud().hide()
+    container.on 'mouseenter', (e)->
+      contents.hud().show()
+    container.on 'mouseleave', (e)->
+      contents.hud().hide()
+
+
 
 
 highlightNewMessages = ->
   # only highlight unhighlighted message items
-  $('[role=log] .kl, [role=log] .kk [id]').filter( -> $(@).find('.GTalkSyntax-HUD').length < 1 ).highlight();
+  $('[role=log] .kl, [role=log] .kk').filter( -> $(@).find('.GTalkSyntax-HUD').length < 1 ).highlight();
   setTimeout(highlightNewMessages, 150)
 
 setTimeout(highlightNewMessages, 1000)

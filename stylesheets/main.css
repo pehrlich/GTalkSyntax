@@ -1,7 +1,7 @@
- .GTalkSyntax-HUD {
+.GTalkSyntax-HUD {
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-  position: relative;
+  position: absolute;
   top: 0;
   right: 0;
   padding: 2px;
@@ -20,20 +20,20 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-   .GTalkSyntax-HUD .current {
+  .GTalkSyntax-HUD .current {
     font-weight: bold; }
-   .GTalkSyntax-HUD .dropdown-menu {
+  .GTalkSyntax-HUD .dropdown-menu {
     display: none; }
-   .GTalkSyntax-HUD .GTalkSyntax-caret {
+  .GTalkSyntax-HUD .GTalkSyntax-caret {
     display: inline-block;
     padding: 0 5px;
     border-radius: 3px;
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
     cursor: pointer; }
-     .GTalkSyntax-HUD .GTalkSyntax-caret:hover {
+    .GTalkSyntax-HUD .GTalkSyntax-caret:hover {
       background-color: rgba(215, 215, 215, 0.8); }
-     .GTalkSyntax-HUD .GTalkSyntax-caret b {
+    .GTalkSyntax-HUD .GTalkSyntax-caret b {
       display: inline-block;
       vertical-align: middle;
       width: 0;
@@ -43,19 +43,22 @@
       border-right: 4px solid transparent;
       border-left: 4px solid transparent;
       content: ""; }
-   .GTalkSyntax-HUD ul {
+  .GTalkSyntax-HUD ul {
     margin: 2px;
     padding-left: 0;
     list-style: none; }
-     .GTalkSyntax-HUD ul li {
+    .GTalkSyntax-HUD ul li {
       border-radius: 3px;
       -webkit-transition: all 0.3s ease-out;
       transition: all 0.3s ease-out;
       cursor: pointer; }
-       .GTalkSyntax-HUD ul li:hover {
+      .GTalkSyntax-HUD ul li:hover {
         background-color: rgba(215, 215, 215, 0.8); }
 
 [role=log] .kl pre, [role=log] .kk [id] pre {
   background-color: #DDD;
   padding: 2px;
   border-radius: 4px; }
+
+[role=log] .kk, [role=log] .kl {
+  position: relative; }

@@ -134,29 +134,32 @@
 
   $.fn.highlight = function() {
     return this.each(function(index, element) {
-      var el, key, value, _ref;
-      el = $(element);
+      var container, contents, key, value, _ref;
+      container = $(element);
+      if (container.is('.kk')) {
+        contents = container.find('[id]:first');
+      } else {
+        contents = container;
+      }
       _ref = Highlight.prototype;
       for (key in _ref) {
         value = _ref[key];
-        el[key] = value;
+        contents[key] = value;
       }
-      el.css({
-        position: 'relative'
-      }).data({
-        original_html: el.html()
+      contents.data({
+        original_html: contents.html()
       }).guess();
-      el.on('mouseenter', function(e) {
-        return el.hud().show();
+      container.on('mouseenter', function(e) {
+        return contents.hud().show();
       });
-      return el.on('mouseleave', function(e) {
-        return el.hud().hide();
+      return container.on('mouseleave', function(e) {
+        return contents.hud().hide();
       });
     });
   };
 
   highlightNewMessages = function() {
-    $('[role=log] .kl, [role=log] .kk [id]').filter(function() {
+    $('[role=log] .kl, [role=log] .kk').filter(function() {
       return $(this).find('.GTalkSyntax-HUD').length < 1;
     }).highlight();
     return setTimeout(highlightNewMessages, 150);
