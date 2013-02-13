@@ -5,6 +5,10 @@
     return this.indexOf(item) >= 0;
   };
 
+  $.fn.concat = function(concat) {
+    return this.val(this.val() + concat);
+  };
+
   $.fn.replace = function(one, two) {
     var html;
     html = this.html();

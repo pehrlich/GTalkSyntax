@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><title>gTalk Syntax Options</title></head>
-<script type="text/javascript" src="lib/underscore.js"></script>
-<script type="text/javascript" src="lib/jquery-1.9.0.min.js"></script>
-<script type="text/javascript" src="lib/util.js"></script>
-<script type="text/javascript" src="lib/bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="javascripts/gtalkSyntax.js"></script>
-<script type="text/javascript" src="javascripts/options.js"></script>
-
-<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="stylesheets/lib/bootstrap/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="stylesheets/lib/kudos.css"/>
 <link rel="stylesheet" type="text/css" href="stylesheets/tab.css"/>
+<link rel="stylesheet" type="text/css" href="stylesheets/toggle-switch.css"/>
 <body>
+
+<a href="https://github.com/pehrlich/GTalkSyntax"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
 
 <div class="container-fluid">
     <h1>
-        <img src="images/icon-48.png"/>
         Options:
     </h1>
 
@@ -31,11 +27,14 @@
             </p>
         </div>
         <div class="span3">
-            <input type="checkbox" name="auto_detect" id="auto_detect_input">
-            <label for="auto_detect_input">Auto-detect code blocks
-                <small><i>(beta)</i></small>
+            <label class="checkbox toggle candy blue" onclick="" for="auto_detect_input">
+            <input type="checkbox" name="auto_detect" id="auto_detect_input"/>
+            <p>
+                <span class="on">On</span>
+                <span class="off">Off</span>
+            </p>
+            <a class="slide-button">|</a>
             </label>
-
             <div id="auto_detect_status" class="status"></div>
         </div>
     </div>
@@ -73,10 +72,47 @@
         </div>
     </div>
 
+    <hr/>
+
+    <div class="row">
+        <div class="span4">
+            Fuel soaring productivity:
+        </div>
+        <div class="span3">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="Y95PQFTH2P7BW">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+        </div>
+        <!--
+        <div style="position: relative;">
+            <figure class="kudo kudoable" data-id="1">
+                <a class="kudobject">
+                    <div class="opening">
+                        <div class="circle">&nbsp;</div>
+                    </div>
+                </a>
+                <a href="#kudo" class="count">
+                    <span class="num">0</span>
+                    <span class="txt">Kudos</span>
+                </a>
+            </figure>
+        </div>-->
+    </div>
+
 
 </div>
 <!-- end container -->
 
 
 </body>
+<script type="text/javascript" src="javascripts/lib/underscore.js"></script>
+<script type="text/javascript" src="javascripts/lib/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="javascripts/lib/util.js"></script>
+<script type="text/javascript" src="javascripts/lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="javascripts/lib/kudos.js"></script>
+<script type="text/javascript" src="javascripts/gtalkSyntax.js"></script>
+<script type="text/javascript" src="javascripts/options.js"></script>
 </html>

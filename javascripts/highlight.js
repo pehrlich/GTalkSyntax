@@ -22,7 +22,7 @@
       var text;
       text = $('<div/>').html(this.data('original_html').replace(/<br>/g, "\n")).text();
       text = hljs.highlightAuto(text).value.replace(/\n/g, '<br>');
-      return "<pre style='overflow-x: auto;'><code>" + text + "</code></pre>";
+      return "<pre style='overflow-x: auto;'><code style='overflow-x: auto;'>" + text + "</code></pre>";
     };
 
     Highlight.prototype.baysian_data = function() {
@@ -40,7 +40,8 @@
       } else if (category === 'code') {
         this.html(this.highlighted_text());
       }
-      return this.add_hud();
+      this.add_hud();
+      return this.find(".GTalkSyntax-" + category).addClass('current');
     };
 
     Highlight.prototype.setCategory = function(category) {
@@ -67,13 +68,64 @@
 
     Highlight.prototype.add_hud = function() {
       var _this = this;
-      this.append("<div class='GTalkSyntax-HUD'><span class='GTalkSyntax-text'>text</span> | <span class='GTalkSyntax-code'>code</span></div>");
-      this.find(".GTalkSyntax-code").click(function() {
-        return _this.setCategory('code');
+      this.append("      <div class='GTalkSyntax-HUD'>        <span class='GTalkSyntax-text'>text</span> |        <span class='GTalkSyntax-code'>code</span>        <span class='GTalkSyntax-caret'>          <b></b>        </span>        <ul class='dropdown-menu'>          <li class='GTalkSyntax-copy'>            Copy Code          </li>          <li class='GTalkSyntax-share'>            Share Plugin          </li>        </ul>     </div>      ");
+      this.code_button().click(function() {
+        _this.setCategory('code');
+        return GTalkSyntax.track('click', 'code');
       });
-      return this.find(".GTalkSyntax-text").click(function() {
-        return _this.setCategory('text');
+      this.text_button().click(function() {
+        _this.setCategory('text');
+        return GTalkSyntax.track('click', 'text');
       });
+      this.find(".GTalkSyntax-caret").click(function(e) {
+        _this.dropdown().toggle();
+        return GTalkSyntax.track('toggle', 'dropdown');
+      });
+      this.share_link().click(function(e) {
+        _this.text_area().concat(' https://chrome.google.com/webstore/detail/gtalk-syntax-highlighting/okpdnaeoefggpaccmolhoaiffmmdoool ');
+        return GTalkSyntax.track('click', 'share plugin');
+      });
+      return this.copy_link().click(function(e) {
+        GTalkSyntax.track('click', 'copy contents');
+        return chrome.extension.sendMessage({
+          command: "copy",
+          content: $("<span>" + (_this.data('original_html')) + "</span>").text()
+        }, function(response) {
+          return console.log('Message Response', response);
+        });
+      });
+    };
+
+    Highlight.prototype.hud = function() {
+      return this.find(".GTalkSyntax-HUD:first");
+    };
+
+    Highlight.prototype.menu = function() {
+      return this.find('ul.dropdown-menu');
+    };
+
+    Highlight.prototype.share_link = function() {
+      return this.find(".GTalkSyntax-share");
+    };
+
+    Highlight.prototype.copy_link = function() {
+      return this.find(".GTalkSyntax-copy");
+    };
+
+    Highlight.prototype.dropdown = function() {
+      return this.find(".dropdown-menu");
+    };
+
+    Highlight.prototype.text_area = function() {
+      return this.closest('[role=dialog]').find('textarea:first');
+    };
+
+    Highlight.prototype.code_button = function() {
+      return this.find(".GTalkSyntax-code");
+    };
+
+    Highlight.prototype.text_button = function() {
+      return this.find(".GTalkSyntax-text");
     };
 
     return Highlight;
@@ -82,18 +134,24 @@
 
   $.fn.highlight = function() {
     return this.each(function(index, element) {
-      var key, value, _ref;
-      element = $(element);
+      var el, key, value, _ref;
+      el = $(element);
       _ref = Highlight.prototype;
       for (key in _ref) {
         value = _ref[key];
-        element[key] = value;
+        el[key] = value;
       }
-      return element.css({
+      el.css({
         position: 'relative'
       }).data({
-        original_html: element.html()
+        original_html: el.html()
       }).guess();
+      el.on('mouseenter', function(e) {
+        return el.hud().show();
+      });
+      return el.on('mouseleave', function(e) {
+        return el.hud().hide();
+      });
     });
   };
 
@@ -106,6 +164,6 @@
 
   setTimeout(highlightNewMessages, 1000);
 
-  console.log('loaded highlight');
+  console.log('Loaded gTalk Highlighter');
 
 }).call(this);

@@ -9,13 +9,29 @@
   "content_scripts": [
     {
       "matches": ["https://mail.google.com/*"],
-      "css": ["stylesheets/main.css", "stylesheets/default.css"],
-      "js": ["lib/jquery-1.9.0.min.js", "lib/underscore.js", "lib/util.js", "lib/highlight.min.js", "lib/classifier-0.1.0.min.js", "javascripts/classifier_info.js", "javascripts/gtalkSyntax.js", "javascripts/highlight.js"]
+      "css": [
+        "stylesheets/main.css", "stylesheets/default.css"
+      ],
+      "js": [
+        "javascripts/lib/jquery-1.9.0.min.js",
+        "javascripts/lib/underscore.js",
+        "javascripts/lib/util.js",
+        "javascripts/lib/highlight.min.js",
+        "javascripts/lib/classifier-0.1.0.min.js",
+        "javascripts/classifier_info.js",
+        "javascripts/gtalkSyntax.js",
+        "javascripts/highlight.js"
+      ]
     }
   ],
   "permissions": [
     "https://mail.google.com/*",
-    "storage"
+    "storage",
+    "clipboardWrite"
   ],
-  "options_page": "options.html"
+  "options_page": "options.html",
+  "background": {
+    "page": "background.html"
+  },
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
 }

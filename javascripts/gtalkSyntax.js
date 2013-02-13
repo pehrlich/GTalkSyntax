@@ -5,6 +5,8 @@
 
     function GTalkSyntax() {}
 
+    GTalkSyntax.published = false;
+
     GTalkSyntax.host = null;
 
     GTalkSyntax.refresh_host = function() {
@@ -50,6 +52,14 @@
           });
         }
       };
+    };
+
+    GTalkSyntax.track = function(verb, noun) {
+      if (this.published) {
+        return _gaq.push(['_trackEvent', noun, verb]);
+      } else {
+        return console.log("Faux tracking " + verb + " " + noun);
+      }
     };
 
     GTalkSyntax.attr_accessor('data_collection_option', 'off');

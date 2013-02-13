@@ -13,7 +13,7 @@
         return $('#collection_custom_url').val(value).show();
       }
     });
-    return GTalkSyntax.auto_detect_option(function(value) {
+    GTalkSyntax.auto_detect_option(function(value) {
       if (value == null) {
         value = false;
       }
@@ -21,11 +21,14 @@
         return $('#auto_detect_input').check();
       }
     });
+    return $('figure.kudo.kudoable').kudoable();
   });
 
   $(document).on('change', '#collection_method_input, #collection_custom_url', function() {
     var value;
-    if ((value = $('#collection_method_input').val()) === 'custom') {
+    value = $('#collection_method_input').val();
+    GTalkSyntax.track("Set " + value, 'Data Collection');
+    if (value === 'custom') {
       $('#collection_custom_url').show();
       value = $('#collection_custom_url').val();
     } else {
@@ -37,9 +40,16 @@
   });
 
   $(document).on('change', '#auto_detect_input', function() {
-    return GTalkSyntax.auto_detect_option($('#auto_detect_input').is_checked(), function(value) {
+    var is_enabled;
+    is_enabled = $('#auto_detect_input').is_checked();
+    GTalkSyntax.auto_detect_option(is_enabled, function(value) {
       return $('#auto_detect_status').html("Saved: " + value);
     });
+    if (is_enabled) {
+      return GTalkSyntax.track('Enable', 'Auto detection');
+    } else {
+      return GTalkSyntax.track('Disable', 'Auto detection');
+    }
   });
 
 }).call(this);

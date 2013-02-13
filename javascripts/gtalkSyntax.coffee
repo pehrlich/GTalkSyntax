@@ -1,4 +1,7 @@
+# todo: can we get rid of underscore.js?
 class window.GTalkSyntax
+  # set this to true when publishing to the web store to turn on analytics.
+  @published: false
   @host: null
 
   @refresh_host: ->
@@ -33,6 +36,12 @@ class window.GTalkSyntax
       else
         chrome.storage.sync.get name, (items)->
           callback(items[name] || attr_default)
+
+  @track: (verb, noun) ->
+    if @published
+      _gaq.push(['_trackEvent', noun, verb]);
+    else
+      console.log "Faux tracking #{verb} #{noun}"
 
   @attr_accessor('data_collection_option', 'off')
   @attr_accessor('auto_detect_option', false)
