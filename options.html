@@ -4,12 +4,14 @@
 <link rel="stylesheet" type="text/css" href="stylesheets/lib/bootstrap/bootstrap.css"/>
 <link rel="stylesheet" type="text/css" href="stylesheets/lib/kudos.css"/>
 <link rel="stylesheet" type="text/css" href="stylesheets/tab.css"/>
+<link rel="stylesheet" type="text/css" href="stylesheets/toggle-switch.css"/>
 <body>
+
+<a href="https://github.com/pehrlich/GTalkSyntax"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
 
 <div class="container-fluid">
     <h1>
-        <img src="images/icon-48.png"/>
         Options:
     </h1>
 
@@ -25,11 +27,14 @@
             </p>
         </div>
         <div class="span3">
-            <input type="checkbox" name="auto_detect" id="auto_detect_input">
-            <label for="auto_detect_input">Auto-detect code blocks
-                <small><i>(beta)</i></small>
+            <label class="checkbox toggle candy blue" onclick="" for="auto_detect_input">
+            <input type="checkbox" name="auto_detect" id="auto_detect_input"/>
+            <p>
+                <span>I</span>
+                <span>O</span>
+            </p>
+            <a class="slide-button"></a>
             </label>
-
             <div id="auto_detect_status" class="status"></div>
         </div>
     </div>
