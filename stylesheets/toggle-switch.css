@@ -60,7 +60,7 @@ https://github.com/ghinda/css-toggle-switch
 		position: absolute;
 		top: 0;
 		left: 0;
-		z-index: 5;
+		z-index: 1;
 
 		display: block;
 		width: 50%;
@@ -83,7 +83,11 @@ https://github.com/ghinda/css-toggle-switch
 		width: 50%;
 		height: 100%;
 		padding: 0;
+        color: white;
 	}
+	.toggle .slide-button:hover {
+      text-decoration: none;
+    }
 
 
 	/* Shared */
@@ -120,7 +124,7 @@ https://github.com/ghinda/css-toggle-switch
 		vertical-align: middle;
 	}
 
-	.toggle input:checked ~ .slide-button {
+	.toggle input:not(:checked) ~ .slide-button {
 		right: 50%;
 	}
 
@@ -161,13 +165,12 @@ https://github.com/ghinda/css-toggle-switch
 		box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3), 0 1px 0px rgba(255, 255, 255, 0.2);
 	}
 
-	.candy input:checked + label {
+	.candy input:not(:checked) + label {
 		color: #333;
 		text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 	}
 
-	.candy .slide-button {
-		border: 1px solid #333;
+	.candy .on {
 
 		background-color: #38a3d4;
 
@@ -177,10 +180,17 @@ https://github.com/ghinda/css-toggle-switch
 		background-image:      -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
 		background-image:         linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
 
+		border: 1px solid #333;
 		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45);
-
 		border-radius: 3px;
+        height: 30px;
 	}
+    .candy .slide-button{
+		border: 1px solid #333;
+		background-color: #ddd;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+		border-radius: 3px;
+    }
 
 	.candy p {
 		color: #333;
