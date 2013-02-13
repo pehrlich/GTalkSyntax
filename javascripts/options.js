@@ -13,7 +13,7 @@
         return $('#collection_custom_url').val(value).show();
       }
     });
-    return GTalkSyntax.auto_detect_option(function(value) {
+    GTalkSyntax.auto_detect_option(function(value) {
       if (value == null) {
         value = false;
       }
@@ -21,6 +21,7 @@
         return $('#auto_detect_input').check();
       }
     });
+    return $('figure.kudo.kudoable').kudoable();
   });
 
   $(document).on('change', '#collection_method_input, #collection_custom_url', function() {

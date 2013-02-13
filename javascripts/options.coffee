@@ -10,6 +10,11 @@ $ ->
     $('#auto_detect_input').check() if value
 
 
+  $('figure.kudo.kudoable').kudoable();
+
+
+
+
 $(document).on 'change', '#collection_method_input, #collection_custom_url', ->
   value = $('#collection_method_input').val()
 
