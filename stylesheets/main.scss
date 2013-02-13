@@ -9,10 +9,10 @@
   }
 }
 
-div > .GTalkSyntax-HUD {
+.GTalkSyntax-HUD {
   -webkit-transition: all 0.3s ease-out;
           transition: all 0.3s ease-out;
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   padding: 2px;
@@ -68,7 +68,7 @@ div > .GTalkSyntax-HUD {
   }
 }
 
-[role=log] .kl pre {
+[role=log] .kl pre, [role=log] .kk [id] pre {
   background-color: #DDD;
   padding: 2px;
   border-radius: 4px;
