@@ -117,7 +117,7 @@ $.fn.highlight = ->
 
 highlightNewMessages = ->
   # only highlight unhighlighted message items
-  $('[role=log] .kl').filter( -> $(@).find('.GTalkSyntax-HUD').length < 1 ).highlight();
+  $('[role=log] .kl, [role=log] .kk [id]').filter( -> $(@).find('.GTalkSyntax-HUD').length < 1 ).highlight();
   setTimeout(highlightNewMessages, 150)
 
 setTimeout(highlightNewMessages, 1000)
