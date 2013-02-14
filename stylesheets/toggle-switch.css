@@ -23,7 +23,8 @@ https://github.com/ghinda/css-toggle-switch
 	.toggle {
 		position: relative;
 		padding: 0;
-		margin-left: 100px;
+		margin-left: 5px;
+		margin-right: 95px;
 	}
 
 	/* Position the label over all the elements, except the slide-button
@@ -51,7 +52,7 @@ https://github.com/ghinda/css-toggle-switch
 
 		width: 100%;
 		margin: 0;
-		padding-right: 100px;
+		padding-right: 12px;
 
 		text-align: left;
 	}
@@ -80,7 +81,7 @@ https://github.com/ghinda/css-toggle-switch
 		z-index: 4;
 
 		display: block;
-		width: 50%;
+		width: 50.5%;
 		height: 100%;
 		padding: 0;
         color: white;
@@ -100,9 +101,6 @@ https://github.com/ghinda/css-toggle-switch
 	.switch *,
 	.toggle * {
 		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		-ms-box-sizing: border-box;
-		-o-box-sizing: border-box;
 		box-sizing: border-box;
 	}
 
@@ -111,9 +109,6 @@ https://github.com/ghinda/css-toggle-switch
 		display: block;
 
 		-webkit-transition: all 0.3s ease-out;
-		-moz-transition: all 0.3s ease-out;
-		-ms-transition: all 0.3s ease-out;
-		-o-transition: all 0.3s ease-out;
 		transition: all 0.3s ease-out;
 	}
 
@@ -156,8 +151,9 @@ https://github.com/ghinda/css-toggle-switch
 		background-color: #2d3035;
 
 		color: #fff;
-		font-weight: bold;
+		/*font-weight: bold;*/
 		text-align: center;
+		line-height: 24px;
 		text-shadow: 1px 1px 1px #191b1e;
 
 		border-radius: 3px;
@@ -174,20 +170,22 @@ https://github.com/ghinda/css-toggle-switch
 
 		background-color: #38a3d4;
 
-		background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
-		background-image:    -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
-		background-image:     -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
-		background-image:      -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
-		background-image:         linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
-
 		border: 1px solid #333;
-		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45);
-		border-radius: 3px;
-        height: 30px;
+		-webkit-border-top-left-radius: 3px;
+		-webkit-border-bottom-left-radius: 3px;
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
+    height: 30px;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
+/*    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+    background-image:         linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+*/
 	}
     .candy .slide-button{
 		border: 1px solid #333;
 		background-color: #ddd;
+		background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+    background-image:         linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
 		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.45);
 		border-radius: 3px;
     }
