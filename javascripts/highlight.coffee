@@ -26,7 +26,7 @@ class Highlight
       original_html = @data('original_html')
       # recognize backtics for inline code highlighting:
       original_html = original_html.replace /`(.+?)`/g, (match, text, urlId)->
-        " <pre style='overflow-x: auto; display: inline-block;'><code>#{text}</code></pre> "
+        " <pre style='overflow-x: auto;' class='inline'><code>#{text}</code></pre> "
       @html original_html
     else if category == 'code'
       @html @highlighted_text()
@@ -98,11 +98,10 @@ class Highlight
   code_button: ->  @find(".GTalkSyntax-code")
   text_button: ->  @find(".GTalkSyntax-text")
 
-
-
 # to be called on a span with text
 $.fn.highlight = ->
   @each (index, element) ->
+    contents = $(element)
     if (contents.parent('.kk').length)
       container = contents.closest('.kk')
     else

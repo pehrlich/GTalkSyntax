@@ -34,7 +34,7 @@
       if (category === 'text') {
         original_html = this.data('original_html');
         original_html = original_html.replace(/`(.+?)`/g, function(match, text, urlId) {
-          return " <pre style='overflow-x: auto; display: inline-block;'><code>" + text + "</code></pre> ";
+          return " <pre style='overflow-x: auto;' class='inline'><code>" + text + "</code></pre> ";
         });
         this.html(original_html);
       } else if (category === 'code') {
@@ -134,7 +134,8 @@
 
   $.fn.highlight = function() {
     return this.each(function(index, element) {
-      var container, key, value, _ref;
+      var container, contents, key, value, _ref;
+      contents = $(element);
       if ((contents.parent('.kk').length)) {
         container = contents.closest('.kk');
       } else {

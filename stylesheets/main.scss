@@ -77,3 +77,18 @@
 [role=log] .kk, [role=log] .kl {
   position: relative;
 }
+
+[role=log] pre {
+  margin: 0;
+  &.inline{
+    display: inline-block;
+    padding: 1px;
+    code{
+      padding: 0px;
+    }
+  }
+  code{
+    padding: 3px;
+  }
+
+}

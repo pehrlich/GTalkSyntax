@@ -62,3 +62,13 @@
 
 [role=log] .kk, [role=log] .kl {
   position: relative; }
+
+[role=log] pre {
+  margin: 0; }
+  [role=log] pre.inline {
+    display: inline-block;
+    padding: 1px; }
+    [role=log] pre.inline code {
+      padding: 0px; }
+  [role=log] pre code {
+    padding: 3px; }
