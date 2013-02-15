@@ -54,9 +54,20 @@
       };
     };
 
+    GTalkSyntax.send = function(command, options, callback) {
+      options.command = command;
+      callback || (callback = function() {
+        return console.log('Message Response', arguments);
+      });
+      return chrome.extension.sendMessage(options, callback);
+    };
+
     GTalkSyntax.track = function(verb, noun) {
       if (this.published) {
-        return _gaq.push(['_trackEvent', noun, verb]);
+        return this.send('track', {
+          noun: noun,
+          verb: verb
+        });
       } else {
         return console.log("Faux tracking " + verb + " " + noun);
       }

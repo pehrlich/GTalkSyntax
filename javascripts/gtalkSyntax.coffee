@@ -37,9 +37,17 @@ class window.GTalkSyntax
         chrome.storage.sync.get name, (items)->
           callback(items[name] || attr_default)
 
+  # sends a message to the background page
+  # takes an optional callback
+  @send: (command, options, callback) ->
+    options.command = command
+    callback ||= ()->
+      console.log 'Message Response', arguments
+    chrome.extension.sendMessage options, callback
+
   @track: (verb, noun) ->
     if @published
-      _gaq.push(['_trackEvent', noun, verb]);
+      @send('track', {noun: noun, verb: verb})
     else
       console.log "Faux tracking #{verb} #{noun}"
 
