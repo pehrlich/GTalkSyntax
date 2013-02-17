@@ -21,7 +21,10 @@ class Highlight
     @text().split(' ')
 
 
-  setDisplay: (category)->
+  # accepts 'text' or 'code'
+  # text will be displayed normally, code will have highlighting attempted
+  # appends the HUD
+  render_as: (category)->
     if category == 'text'
       original_html = @data('original_html')
       # recognize backtics for inline code highlighting:
@@ -35,7 +38,7 @@ class Highlight
     @find(".GTalkSyntax-#{category}").addClass('current')
 
   setCategory: (category)->
-    @setDisplay category
+    @render_as category
 
     # todo: get rid of this? don't? Persist w/ localstorage?
     bayes.train(@baysian_data() , category)
@@ -50,9 +53,9 @@ class Highlight
     original_text = @text()
     if auto_detect_option == false || original_text.indexOf('`') != -1
       # if there are backticks, don't be smart about it
-      @setDisplay 'text'
+      @render_as 'text'
     else
-      @setDisplay bayes.classify(original_text)
+      @render_as bayes.classify(original_text)
 
   add_hud: ->
     @append "
@@ -86,7 +89,8 @@ class Highlight
       GTalkSyntax.track 'click', 'share plugin'
     @copy_link().click (e)=>
       GTalkSyntax.track 'click', 'copy contents'
-      chrome.extension.sendMessage {command: "copy", content: $("<span>#{@data('original_html')}</span>").text()}, (response) ->
+      corrected_html = @data('original_html').replace(/<br>/ig, "\n")
+      chrome.extension.sendMessage {command: "copy", content: $("<span>#{corrected_html}</span>").text()}, (response) ->
         console.log 'Message Response', response
 
   hud: -> @find(".GTalkSyntax-HUD:first")

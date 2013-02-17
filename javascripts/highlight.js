@@ -29,7 +29,7 @@
       return this.text().split(' ');
     };
 
-    Highlight.prototype.setDisplay = function(category) {
+    Highlight.prototype.render_as = function(category) {
       var original_html;
       if (category === 'text') {
         original_html = this.data('original_html');
@@ -45,7 +45,7 @@
     };
 
     Highlight.prototype.setCategory = function(category) {
-      this.setDisplay(category);
+      this.render_as(category);
       bayes.train(this.baysian_data(), category);
       if (GTalkSyntax.host) {
         console.log('training', GTalkSyntax.url('/classifiers/1/train'));
@@ -60,9 +60,9 @@
       var original_text;
       original_text = this.text();
       if (auto_detect_option === false || original_text.indexOf('`') !== -1) {
-        return this.setDisplay('text');
+        return this.render_as('text');
       } else {
-        return this.setDisplay(bayes.classify(original_text));
+        return this.render_as(bayes.classify(original_text));
       }
     };
 
@@ -86,10 +86,12 @@
         return GTalkSyntax.track('click', 'share plugin');
       });
       return this.copy_link().click(function(e) {
+        var corrected_html;
         GTalkSyntax.track('click', 'copy contents');
+        corrected_html = _this.data('original_html').replace(/<br>/ig, "\n");
         return chrome.extension.sendMessage({
           command: "copy",
-          content: $("<span>" + (_this.data('original_html')) + "</span>").text()
+          content: $("<span>" + corrected_html + "</span>").text()
         }, function(response) {
           return console.log('Message Response', response);
         });
