@@ -23,7 +23,7 @@ class window.GTalkSyntax
   # creates a getter/setter method which takes an optional value and mandatory callback.
   @attr_accessor: (name, attr_default) ->
     @[name] = (value, callback) ->
-      if _.isFunction(value) && !callback
+      if $.isFunction(value) && !callback
         callback = value
         value = undefined
 

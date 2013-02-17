@@ -14,7 +14,6 @@
       ],
       "js": [
         "javascripts/lib/jquery-1.9.0.min.js",
-        "javascripts/lib/underscore.js",
         "javascripts/lib/util.js",
         "javascripts/lib/highlight.min.js",
         "javascripts/lib/classifier-0.1.0.min.js",

@@ -36,7 +36,7 @@
     GTalkSyntax.attr_accessor = function(name, attr_default) {
       return this[name] = function(value, callback) {
         var options;
-        if (_.isFunction(value) && !callback) {
+        if ($.isFunction(value) && !callback) {
           callback = value;
           value = void 0;
         }
